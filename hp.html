@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trading Website</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      line-height: 1.6;
+      background: url('https://i.imgur.com/7aKMgVS.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* বাটন গুলো নতুন লাইনে যাবে, স্ক্রিন অনুযায়ী */
+    }
+
+    header nav ul li {
+      margin: 5px;
+    }
+
+    header nav ul li button {
+      background: #ffd700;
+      color: #000;
+      border: none;
+      padding: 8px 12px; /* বাটনের সাইজ ছোট করা হয়েছে */
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header nav ul li button:hover {
+      background: #000;
+      color: #ffd700;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .content-section {
+      display: none;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    .offer-item {
+      text-align: center;
+    }
+
+    .offer-item img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .offer-item p,
+    .offer-item a {
+      margin: 10px 0;
+      color: #ffd700;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: rgba(0, 0, 0, 0.7);
+      text-align: center;
+      padding: 10px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header nav ul li button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>Trading Updates</h1>
+      <nav>
+        <ul>
+          <li><button onclick="showSection('home')">Home</button></li>
+          <li><button onclick="showSection('offers')">Offers</button></li>
+          <li><button onclick="showSection('updates')">Updates</button></li>
+          <li><button onclick="showSection('terms')">T&C</button></li>
+          <li><button onclick="showSection('support')">Support</button></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Home Section -->
+      <section id="home" class="content-section active">
+        <h2>Welcome to Trading Updates</h2>
+        <p>Here you can find all the latest news and information about trading.</p>
+        <!-- আপনি এখানে হোমপেজের কন্টেন্ট যোগ করতে পারবেন -->
+        <div class="home-content">
+          <h3>Latest Trading Insights</h3>
+          <p>Stay tuned for the latest trading trends and strategies.</p>
+        </div>
+      </section>
+
+      <!-- Offers Section -->
+      <section id="offers" class="content-section">
+        <h2>Special Offers</h2>
+        <!-- এখানে অফারের ডাটা যোগ করুন -->
+        <div class="offer-item">
+          <img src="https://i.imgur.com/iuWEVma.png" alt="Offer Image">
+          <p>Offer Description: <strong>Special 50% Discount on Premium Accounts</strong></p>
+          <a href="#">Click here to claim this offer</a>
+        </div>
+        <h2>সেরা অফার</h2>
+        <div class="offer-item">
+  <img src="https://i.imgur.com/rjW7Shx.png" alt="https://i.imgur.com/rjW7Shx.png">
+  <p>Offer Description: <strong>Your Offer Text Here</strong></p>
+  <a href="Your Link Here">Your Link Text Here</a>
+</div>
+      </section>
+
+      <!-- Updates Section -->
+      <section id="updates" class="content-section">
+        <h2>Latest Updates</h2>
+        <p>Stay updated with the latest news and updates about trading trends.</p>
+        <!-- এখানে নতুন আপডেট যোগ করুন -->
+        <ul>
+          <li>Update 1: Market analysis is now available</li>
+          <li>Update 2: Daily tips to improve your trading</li>
+        </ul>
+      </section>
+
+      <!-- Terms & Conditions Section -->
+      <section id="terms" class="content-section">
+        <h2>Terms & Conditions</h2>
+        <p>Please read our terms and conditions carefully before using our services.</p>
+      </section>
+
+      <!-- Support Section -->
+      <section id="support" class="content-section">
+        <h2>Support</h2>
+        <p>If you need help, please contact our support team at:</p>
+        <p>Email: <a href="mailto:support@tradingwebsite.com">support@tradingwebsite.com</a></p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Trading Website. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Function to display specific section
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.content-section');
+      sections.forEach(section => section.classList.remove('active'));
+
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>
