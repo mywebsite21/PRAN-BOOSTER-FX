@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Elite Hub - Professional Trading Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --primary-dark: #0099cc;
+            --dark: #0a0e17;
+            --dark-2: #111827;
+            --gray: #6b7280;
+            --light: #e5e7eb;
+            --gradient: linear-gradient(135deg, #00d4ff, #6366f1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 14, 23, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background: rgba(10, 14, 23, 0.98);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+
+        .logo img {
+            height: 58px;
+            filter: drop-shadow(0 4px 10px rgba(0, 212, 255, 0.4));
+            transition: transform 0.4s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.08);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 42px;
+        }
+
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -8px;
+            left: 0;
+            background: var(--gradient);
+            transition: width 0.4s ease;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: white;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: white;
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.4s;
+        }
+
+        /* Hero Section - Modern & Clean */
+        #hero {
+            height: 100vh;
+            min-height: 780px;
+            background: linear-gradient(rgba(10, 14, 23, 0.82), rgba(10, 14, 23, 0.92)),
+                        url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 4.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            margin-bottom: 2.5rem;
+            max-width: 620px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 38px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: black;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.55);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* About, Products, Contact - Simple elegant cards */
+        section {
+            padding: 140px 5% 120px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(17, 24, 39, 0.7);
+            border-radius: 16px;
+            padding: 40px 30px;
+            border: 1px solid rgba(0, 212, 255, 0.12);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Footer */
+        footer {
+            background: #05070f;
+            padding: 80px 5% 40px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content h1 { font-size: 4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3.2rem; }
+            .hero-content p { font-size: 1.3rem; }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-2);
+                flex-direction: column;
+                padding: 30px 0;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s ease;
+            }
+
+            nav ul.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="https://i.postimg.cc/ZqHLr76k/20251005-103747.png" alt="Forex Elite Hub Logo">
+            </div>
+
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Trade Smarter. Win Bigger.</h1>
+                <p>Next-generation Forex platform with institutional-grade tools, lightning-fast execution, and precise signals — built for serious traders.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">Start Trading Now</a>
+                    <a href="#contact" class="btn btn-secondary">Talk to Expert</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Who We Are</h2>
+            </div>
+            <div style="max-width: 900px; margin: 0 auto; text-align: center; font-size: 1.25rem; color: #d1d5db;">
+                <p>Forex Elite Hub is trusted by thousands of traders across the globe. We combine cutting-edge technology, deep market expertise, and transparent pricing to deliver the ultimate trading experience.</p>
+                <p style="margin-top: 2rem;">Whether you're scalping news events or building long-term strategies — we give you the edge you need in today's volatile markets.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products / Features -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Powerful Features</h2>
+            </div>
+            <div class="card-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">AI-Powered Analysis</h3>
+                    <p style="color: #9ca3af;">Real-time sentiment, pattern detection & probability scoring on every pair.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Ultra-Fast Signals</h3>
+                    <p style="color: #9ca3af;">High-probability setups delivered instantly via app, email & Telegram.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Pro Trading Academy</h3>
+                    <p style="color: #9ca3af;">Live sessions, strategy vault & mentorship from 10+ year veterans.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.3rem; margin-bottom: 2rem;">Have questions? Ready to start? Reach out — our team responds within hours.</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; font-size: 1.2rem;">
+                    <div><i class="fas fa-envelope" style="color: var(--primary); margin-right: 12px;"></i> support@forexelitehub.com</div>
+                    <div><i class="fas fa-phone" style="color: var(--primary); margin-right: 12px;"></i> +880 1711-XXXXXX</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Forex Elite Hub. All rights reserved. Trading involves risk.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('#nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect + active link
+        window.addEventListener('scroll', () => {
+            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 80);
+
+            // Simple active link (optional improvement)
+            document.querySelectorAll('section').forEach(section => {
+                if (window.scrollY >= section.offsetTop - 200) {
+                    const id = section.getAttribute('id');
+                    document.querySelectorAll('nav a').forEach(a => {
+                        a.classList.remove('active');
+                        if (a.getAttribute('href') === `#${id}`) a.classList.add('active');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
